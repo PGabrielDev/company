@@ -2,7 +2,9 @@ package com.gabriel.hrworker.controller;
 
 import com.gabriel.hrworker.entities.Worker;
 import com.gabriel.hrworker.repository.WorkerRepository;
-import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +16,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/workers")
-@RequiredArgsConstructor
 public class WorkerController {
 
     private final WorkerRepository repository;
+
+    private final Environment env;
+
+    private static Logger log = LoggerFactory.getLogger(WorkerController.class);
+    public WorkerController(WorkerRepository repository, Environment env) {
+        this.repository = repository;
+        this.env = env;
+    }
 
     @GetMapping
     public ResponseEntity<List<Worker>> findAll(){
@@ -27,6 +36,8 @@ public class WorkerController {
     @GetMapping("/{id}")
     public ResponseEntity<Worker> findById(@PathVariable Long id) throws Exception {
         try {
+            log.info("PORTA: " + env.getProperty("local.serve.port"));
+            System.out.println("PORTA: " + env.getProperty("local.serve.port"));
             Worker worker = repository.findById(id).orElseThrow(() -> new Exception("Worker not found"));
             return ResponseEntity.ok(worker);
         } catch (Exception e){
