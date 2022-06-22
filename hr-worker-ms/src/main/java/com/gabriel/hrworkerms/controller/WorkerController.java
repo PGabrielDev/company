@@ -1,7 +1,7 @@
-package com.gabriel.hrworker.controller;
+package com.gabriel.hrworkerms.controller;
 
-import com.gabriel.hrworker.entities.Worker;
-import com.gabriel.hrworker.repository.WorkerRepository;
+import com.gabriel.hrworkerms.models.Worker;
+import com.gabriel.hrworkerms.repository.WorkerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;

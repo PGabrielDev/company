@@ -1,13 +1,13 @@
-package com.gabriel.hrworker;
+package com.gabriel.hrworkerms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HrWorkerApplication {
+public class HrWorkerMsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HrWorkerApplication.class, args);
+        SpringApplication.run(HrWorkerMsApplication.class, args);
     }
 
 }
